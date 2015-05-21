@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Products</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/assets/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<h1>Product Information</h1>
+				<table class="table table-bordered">
+				<thead>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Price</th>
+ 				</thead>
+				<tbody>
+ 					<tr>
+						<td><%= @oneProduct.name%></td>
+						<td><%= @oneProduct.description%></td>
+						<td>$<%= @oneProduct.pricing%></td>
+ 					</tr> 
+ 				</tbody>
+			</table>
+			<a href="/products/<%=@oneProduct.id%>/edit">Edit</a> |
+			<a href="/products/back">Back</a>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
+				<form action="/comments"method="post">
+					<input type= "hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+					<label for="comment">Comment</label>
+					<input type="hidden" name="productId" class="form-control"value="<%= @oneProduct.id %>">
+					<textarea name="comment"cols="30" rows="10" class="form-control"></textarea>
+					<button class="btn btn-primary submit">Submit</button>
+					<a href="/comments/comments"><button class="btn btn-success">Show Comments</button></a>
+				</form>
+				<% @oneProduct.comments.each do |comment|
+				%><p class="comment"><%= comment.comment %></p>
+				<%
+				end
+				%>
+
+			</div>
+			<div class="col-md-2"></div>
+
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Create a new Product</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/assets/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 form-group"></div>
+			<div class="col-md-4 form-group">
+<% 
+		if @errors
+			@errors.each do |error| 
+%>
+		<p class="errors"><%= error %></p>
+<%		end 
+ 		end
+
+%>
+				<h1>Create Your Product</h1>
+				<form action="/products" method="post">
+					<input type= "hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+					<label for="category">Category</label>
+					<select name="category" class="form-control">
+						<% @productCategories.each do |productCategory| %>
+						<option name="category" value="<%= productCategory.id%>"><%= productCategory.name%></option>
+						<% end %>
+					</select>
+
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" name="name">
+					<label for="description">Description:</label>
+					<input type="text" class="form-control" name="description">
+					<label for="price">Price:</label>
+					<input type="text" class="form-control" name="price">
+					<a href="/products/back"><button class="btn btn-primary update">Back</button></a>
+					<button class="btn btn-success create pull-right">Create</button>
+				</form>
+			</div>
+			<div class="col-md-4"</div>
+		</div>
+	</div>
+	
+</body>
+</html>
+ 

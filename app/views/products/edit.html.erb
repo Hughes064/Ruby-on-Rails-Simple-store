@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Edit Product</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="/assets/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Julius+Sans+One' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 form-group"></div>
+			<div class="col-md-4 form-group">
+				<h1>Edit Your Product</h1>
+				<form action="/products/<%= @ProductToEdit.id %>" method="post">
+					<input type= "hidden" name="authenticity_token" value="<%= form_authenticity_token %>"> 
+					<label for="category">Category</label>
+					<select name="category" class="form-control">
+						<option name="category">Household</option>
+						<option name="category">Electronics</option>
+						<option name="category">Gardening</option>
+						<option name="category">Automotive</option>
+					</select>
+					<label for="name">Name:</label>
+					<input type="text" class="form-control" name="name" value=<%= @ProductToEdit.name %>>
+					<label for="description">Description:</label>
+					<input type="text" class="form-control" name="description" value=<%= @ProductToEdit.description %>>
+					<label for="price">Price:</label>
+					<input type="text" class="form-control" name="price"value=<%= @ProductToEdit.pricing %>>
+					<button class="btn btn-primary pull-right back">Update</button>
+					<a href="/products/back"><button class="btn btn-primary update">Back</button></a>
+				</form>
+			</div>
+			<div class="col-md-4"</div>
+		</div>
+	</div>
+	
+</body>
+</html>
+ 
